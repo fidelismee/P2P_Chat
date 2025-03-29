@@ -1,5 +1,11 @@
+### Compiling the Backend
 ```
-g++ p2p_chat.cpp -o ../bin/chat -lws2_32
+g++ src/p2p_chat.cpp -o bin/chat -lws2_32
+```
+
+### Run the executable file
+```
+./bin/chat.exe
 ```
 
 ### Troubleshoot Backend
@@ -7,3 +13,4 @@ g++ p2p_chat.cpp -o ../bin/chat -lws2_32
 ```
 wscat -c ws://localhost:9002
 ```
+
