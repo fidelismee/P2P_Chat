@@ -3,34 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSocket Chat</title>
+    <title>P2P Chat</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #chatbox { width: 50%; height: 300px; border: 1px solid black; overflow-y: scroll; margin: auto; padding: 10px; }
-        input, button { margin: 5px; }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #chat-container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #fff;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>WebSocket Chat</h1>
-    <div id="chatbox"></div>
-    <input type="text" id="message" placeholder="Type your message">
-    <button onclick="sendMessage()">Send</button>
-    
-    <script>
-        const socket = new WebSocket("ws://localhost:9002");
-        const chatbox = document.getElementById("chatbox");
-        
-        socket.onmessage = function(event) {
-            const msg = document.createElement("p");
-            msg.textContent = event.data;
-            chatbox.appendChild(msg);
-        };
-        
-        function sendMessage() {
-            const message = document.getElementById("message").value;
-            socket.send(message);
-            document.getElementById("message").value = "";
-        }
-    </script>
+
+    <div id="chat-container">
+        <h2>P2P Chat</h2>
+        <div id="messages"></div>
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button id="sendBtn">Send</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
